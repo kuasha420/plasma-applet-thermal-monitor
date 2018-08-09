@@ -33,9 +33,8 @@ Item {
         
         systemmonitorDS.sources.forEach(function (source) {
             
-            if ((source.indexOf('lmsensors/') === 0 || source.indexOf('acpi/Thermal_Zone/') === 0)
-                && !source.match(/\/fan[0-9]*$/) ) {
                 
+            if ((source.indexOf('lmsensors/') === 0 || source.indexOf('acpi/Thermal_Zone/') === 0)) {
                 comboboxModel.append({
                     text: source,
                     val: source
@@ -325,6 +324,7 @@ Item {
                 id: warningTemperatureItem
                 stepSize: 10
                 minimumValue: 10
+                maximumValue: 9999
                 enabled: overrideLimitTemperatures.checked
             }
             
@@ -336,6 +336,7 @@ Item {
                 id: meltdownTemperatureItem
                 stepSize: 10
                 minimumValue: 10
+                maximumValue: 9999
                 enabled: overrideLimitTemperatures.checked
             }
             
