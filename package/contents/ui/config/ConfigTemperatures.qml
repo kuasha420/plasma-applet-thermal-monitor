@@ -237,42 +237,6 @@ Item {
                 enabled: !addResourceDialog.virtualSelected
             }
             
-            RadioButton {
-                id: multipleSourceTypeRadio
-                exclusiveGroup: sourceTypeGroup
-                text: i18n("Group of sources")
-                onCheckedChanged: {
-                    if (checked) {
-                        addResourceDialog.sourceTypeSwitch = 1
-                    }
-                    addResourceDialog.setVirtualSelected()
-                }
-                Layout.alignment: Qt.AlignTop
-            }
-            ListView {
-                id: checkboxesSourcesListView
-                model: checkboxesSourcesModel
-                delegate: CheckBox {
-                    text: val
-                    checked: checkboxChecked
-                    onCheckedChanged: {
-                        if (checked) {
-                            if (addResourceDialog.groupSources.indexOf(val) === -1) {
-                                addResourceDialog.groupSources.push(val)
-                            }
-                        } else {
-                            var idx = addResourceDialog.groupSources.indexOf(val)
-                            if (idx !== -1) {
-                                addResourceDialog.groupSources.splice(idx, 1)
-                            }
-                        }
-                    }
-                }
-                enabled: addResourceDialog.virtualSelected
-                Layout.preferredWidth: tableWidth/2
-                Layout.preferredHeight: contentHeight
-            }
-            
             Item {
                 Layout.columnSpan: 2
                 width: 2
